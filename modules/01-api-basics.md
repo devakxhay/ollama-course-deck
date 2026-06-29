@@ -5,16 +5,30 @@ paginate: true
 header: 'Ollama in Your Project | Module 01'
 footer: 'Software & AI Tools Course Series'
 style: |
+  @import "../templates/theme.css";
   section {
-    background-color: #121214;
-    color: #e1e1e6;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: var(--color-bg);
+    color: var(--color-text);
   }
-  h1, h2, h3 { color: #00b37e; }
-  footer, header { color: #7c7c8a; font-size: 14px; }
-  code { background-color: #202024; color: #e1e1e6; border-radius: 4px; }
-  pre { background-color: #202024; border: 1px solid #29292e; }
-  .columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+  h1, h2, h3 {
+    color: var(--color-accent);
+  }
+  footer, header {
+    color: var(--color-muted);
+  }
+  code {
+    background-color: var(--color-surface);
+    color: var(--color-text);
+  }
+  pre {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+  }
+  .columns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
 ---
 
 # <!-- fit --> Ollama API Architecture
