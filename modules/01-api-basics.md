@@ -9,6 +9,16 @@ style: |
   section {
     background: #0D1117;
     color: #F5F0E8;
+    position: relative;
+    padding-left: 3rem;
+  }
+  section::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: #E8593C;
+    border-radius: 0 2px 2px 0;
   }
   h1, h2, h3 {
     color: #E8593C;
@@ -19,7 +29,14 @@ style: |
   .columns {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem;
+    gap: 0;
+  }
+  .col {
+    padding: 0 1.25rem;
+  }
+  .col:first-child {
+    border-right: 1px solid #21262D;
+    padding-left: 0;
   }
   pre {
     background: #161B22 !important;
@@ -40,10 +57,74 @@ style: |
     border-radius: 4px;
     padding: 0.1em 0.3em;
   }
+  .badge {
+    background: rgba(232, 89, 60, 0.12);
+    border: 1px solid #E8593C;
+    color: #E8593C;
+    border-radius: 6px;
+    padding: 0.1em 0.55em;
+    font-size: 0.65em;
+    font-family: 'JetBrains Mono', monospace;
+    vertical-align: middle;
+    letter-spacing: 0.02em;
+  }
+  .module-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #E8593C;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  .title-divider {
+    width: 48px;
+    height: 3px;
+    background: #E8593C;
+    border-radius: 2px;
+    margin: 1rem 0;
+  }
+  .callout {
+    border-left: 3px solid #E8593C;
+    background: #161B22;
+    padding: 0.6rem 1rem;
+    border-radius: 0 6px 6px 0;
+    margin-bottom: 0.65rem;
+    font-size: 0.88em;
+    line-height: 1.5;
+  }
+  .callout strong {
+    color: #E8593C;
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+  .callout .fix {
+    color: #8B949E;
+    font-size: 0.9em;
+  }
+  .callout .fix code {
+    font-size: 0.85em;
+  }
+  .chip {
+    display: inline-block;
+    background: rgba(232, 89, 60, 0.10);
+    border: 1px solid #21262D;
+    color: #F5F0E8;
+    border-radius: 4px;
+    padding: 0.05em 0.45em;
+    font-size: 0.78em;
+    font-family: 'JetBrains Mono', monospace;
+    vertical-align: middle;
+  }
 ---
 
+<span class="module-label">Module 01 · REST API Internals</span>
+
 # <!-- fit --> Ollama API Architecture
-### Master Module 01: `/api/generate` vs `/api/chat`
+
+<div class="title-divider"></div>
+
+### `/api/generate` vs `/api/chat` — Production Mechanics
 
 <!-- 
 SPEAKER NOTES (Hinglish):
@@ -57,22 +138,23 @@ Aaj hum in dono pipelines ke core differences aur execution mechanics ko line-by
 # The Core Architectural Division
 
 <div class="columns">
-<div>
+<div class="col">
 
-### /api/generate
+### `/api/generate`
 * **Execution Pattern:** Single-turn atomic completion.
 * **Input Layer:** Flat prompt string.
 * **State Management:** Fully stateless transaction.
 * **Best Used For:** Automated parsing, strict text classification, code snippet writing.
+
 </div>
+<div class="col">
 
-<div>
-
-### /api/chat
+### `/api/chat`
 * **Execution Pattern:** Stateful multi-turn loops.
-* **Input Layer:** Structured structural message arrays.
+* **Input Layer:** Structured message arrays.
 * **State Management:** Context managed via appended history.
 * **Best Used For:** Interactive conversational pipelines, stateful agents.
+
 </div>
 </div>
 
@@ -85,7 +167,7 @@ Right side me hai chat endpoint—ye stateful logic design ke liye bana hai, jah
 
 ---
 
-# Payload Blueprint: `/api/generate`
+# Payload Blueprint <span class="badge">/api/generate</span>
 
 ```json
 {
@@ -106,7 +188,7 @@ Model specifying, stream ko false karna (agar simple atomic completion chahiye),
 
 ---
 
-# Payload Blueprint: `/api/chat`
+# Payload Blueprint <span class="badge">/api/chat</span>
 
 ```json
 {
@@ -137,7 +219,7 @@ Ye message array pure conversational state ko build karne aur model ko behavior 
 # Execution Telemetry: Output Performance Metrics
 
 <div class="columns">
-<div>
+<div class="col">
 
 ```json
 {
@@ -155,11 +237,13 @@ Ye message array pure conversational state ko build karne aur model ko behavior 
 ```
 
 </div>
-<div>
+<div class="col">
 
-* **VRAM Load Time (`load_duration`):** Cold start overhead when model is not active in VRAM.
-* **Prompt Processing Speed:** Calculated as `(prompt_eval_count / prompt_eval_duration) * 1e9` tokens/sec.
-* **Generation Throughput (`eval_count`):** Actual inference speed of the model.
+* <span class="chip">load_duration</span> **VRAM Load Time** — Cold start overhead when model is not active in VRAM.
+
+* <span class="chip">prompt_eval_count / duration</span> **Prompt Speed** — Tokens/sec = `count / duration × 1e9`.
+
+* <span class="chip">eval_count</span> **Generation Throughput** — Actual inference speed of the model.
 
 </div>
 </div>
@@ -177,12 +261,23 @@ Inference throughput ko analyze karne ke liye evaluation count ko eval_duration 
 
 # Production Gotchas & Error Resolution
 
-* **VRAM Eviction Timeout:** Ollama unloads models from VRAM after 5 minutes of inactivity (`OLLAMA_KEEP_ALIVE=5m`).
-  * *Resolution:* Set `OLLAMA_KEEP_ALIVE=-1` in environment variables to keep the model loaded indefinitely.
-* **Context Length Limits:** Default context is often 2048 tokens. Long chat histories get truncated silently.
-  * *Resolution:* Explicitly set `"num_ctx": 8192` inside the `options` block of your payload.
-* **Concurrency Bottleneck:** Single worker queue defaults to serial execution.
-  * *Resolution:* Configure `OLLAMA_NUM_PARALLEL=4` to allow concurrent stream processing.
+<div class="callout">
+  <strong>⚡ VRAM Eviction Timeout</strong>
+  Ollama unloads models after 5 min of inactivity (<code>OLLAMA_KEEP_ALIVE=5m</code>).<br>
+  <span class="fix">→ Fix: Set <code>OLLAMA_KEEP_ALIVE=-1</code> to keep the model loaded indefinitely.</span>
+</div>
+
+<div class="callout">
+  <strong>📏 Context Length Limits</strong>
+  Default context window is 2048 tokens. Long chat histories get truncated silently.<br>
+  <span class="fix">→ Fix: Explicitly set <code>"num_ctx": 8192</code> in the <code>options</code> block.</span>
+</div>
+
+<div class="callout">
+  <strong>🔀 Concurrency Bottleneck</strong>
+  Single worker queue defaults to serial execution under load.<br>
+  <span class="fix">→ Fix: Set <code>OLLAMA_NUM_PARALLEL=4</code> to enable concurrent stream processing.</span>
+</div>
 
 <!-- 
 SPEAKER NOTES (Hinglish):
