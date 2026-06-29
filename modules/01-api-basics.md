@@ -7,19 +7,38 @@ footer: 'AI in Production Course'
 style: |
   @import "../templates/theme.css";
   section {
-    background: var(--color-bg);
-    color: var(--color-text);
+    background: #0D1117;
+    color: #F5F0E8;
   }
   h1, h2, h3 {
-    color: var(--color-accent);
+    color: #E8593C;
   }
   footer, header {
-    color: var(--color-muted);
+    color: #8B949E;
   }
   .columns {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem;
+  }
+  pre {
+    background: #161B22 !important;
+    border: 1px solid #21262D !important;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
+  }
+  pre code {
+    background: transparent !important;
+    color: #f8fafc !important;
+    font-size: 0.85em;
+    line-height: 1.6;
+  }
+  code {
+    background: #161B22 !important;
+    color: #F5F0E8 !important;
+    border-radius: 4px;
+    padding: 0.1em 0.3em;
   }
 ---
 
