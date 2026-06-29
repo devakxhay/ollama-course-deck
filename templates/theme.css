@@ -121,29 +121,30 @@ samp {
    Code Blocks & Syntax Highlighting (Dark Theme Optimized)
    ─────────────────────────────────────────────── */
 
-code {
-  background-color: var(--color-surface);
-  color: var(--color-text);
+section code {
+  background-color: var(--color-surface) !important;
+  color: var(--color-text) !important;
   border-radius: var(--radius-sm);
   padding: 0.1em 0.3em;
 }
 
-pre {
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
+section pre {
+  background-color: var(--color-surface) !important;
+  border: 1px solid var(--color-border) !important;
   border-radius: var(--radius-md);
   padding: var(--space-md);
   box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
   overflow-x: auto;
 }
 
-pre code {
-  background: transparent;
+section pre code {
+  background: transparent !important;
   padding: 0;
-  color: #f8fafc;
+  color: #f8fafc !important;
   font-size: 0.9em;
   line-height: 1.6;
 }
+
 
 /* Syntax highlighting tweaks optimized for dark theme */
 .hljs-attr,

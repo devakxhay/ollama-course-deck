@@ -23,7 +23,7 @@ style: |
   }
 ---
 
-# Ollama API Architecture
+# <!-- fit --> Ollama API Architecture
 ### Master Module 01: `/api/generate` vs `/api/chat`
 
 <!-- 
@@ -117,6 +117,9 @@ Ye message array pure conversational state ko build karne aur model ko behavior 
 
 # Execution Telemetry: Output Performance Metrics
 
+<div class="columns">
+<div>
+
 ```json
 {
   "model": "qwen2.5-coder:7b",
@@ -131,9 +134,16 @@ Ye message array pure conversational state ko build karne aur model ko behavior 
   "eval_duration": 1548000000
 }
 ```
+
+</div>
+<div>
+
 * **VRAM Load Time (`load_duration`):** Cold start overhead when model is not active in VRAM.
 * **Prompt Processing Speed:** Calculated as `(prompt_eval_count / prompt_eval_duration) * 1e9` tokens/sec.
 * **Generation Throughput (`eval_count`):** Actual inference speed of the model.
+
+</div>
+</div>
 
 <!-- 
 SPEAKER NOTES (Hinglish):
