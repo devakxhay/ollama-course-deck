@@ -118,6 +118,56 @@ samp {
 }
 
 /* ───────────────────────────────────────────────
+   Code Blocks & Syntax Highlighting (Dark Theme Optimized)
+   ─────────────────────────────────────────────── */
+
+code {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border-radius: var(--radius-sm);
+  padding: 0.1em 0.3em;
+}
+
+pre {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
+  overflow-x: auto;
+}
+
+pre code {
+  background: transparent;
+  padding: 0;
+  color: #f8fafc;
+  font-size: 0.9em;
+  line-height: 1.6;
+}
+
+/* Syntax highlighting tweaks optimized for dark theme */
+.hljs-attr,
+.hljs-keyword {
+  color: #f43f5e;
+  font-weight: 500;
+}
+
+.hljs-string {
+  color: #34d399;
+}
+
+.hljs-number,
+.hljs-literal {
+  color: #fb923c;
+}
+
+.hljs-comment {
+  color: var(--color-muted);
+  font-style: italic;
+}
+
+
+/* ───────────────────────────────────────────────
    Typography utilities
    ─────────────────────────────────────────────── */
 
