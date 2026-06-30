@@ -41,14 +41,14 @@ style: |
     background: #161B22 !important;
     border: 1px solid #21262D !important;
     border-radius: 8px;
-    padding: 1rem;
+    padding: 0.5rem;
     box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
   }
   pre code {
     background: transparent !important;
     color: #f8fafc !important;
-    font-size: 0.85em;
-    line-height: 1.6;
+    font-size: 0.75em;
+    line-height: 1.5;
   }
   code {
     background: #161B22 !important;
@@ -260,7 +260,7 @@ Teesra, small lightweight models system tags parameters sahi se parsing detect n
 
 <div class="title-divider"></div>
 
-### Next Up: [Module 05 · Multi-Turn State](./05-multi-turn-state.md)
+### Next Up: [Module 05 · Multi-Turn State](./05-multi-turn-state.html)
 
 * **What we will cover next:**
   * Keeping chat memory across stateless API cycles

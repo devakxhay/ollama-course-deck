@@ -41,14 +41,14 @@ style: |
     background: #161B22 !important;
     border: 1px solid #21262D !important;
     border-radius: 8px;
-    padding: 1rem;
+    padding: 0.5rem;
     box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
   }
   pre code {
     background: transparent !important;
     color: #f8fafc !important;
-    font-size: 0.85em;
-    line-height: 1.6;
+    font-size: 0.75em;
+    line-height: 1.5;
   }
   code {
     background: #161B22 !important;
@@ -289,3 +289,24 @@ Pehla bottleneck context limit limits limit reach hone par aata hai, iske liye a
 Doosra problem high parsing TTFB values ka hai, options configurations options me num_ctx context parameters expand karke load balance check karein.
 Teesra issue network disconnect case me state mismatch ka hai, transaction locks validation checks response validation complete hone par hi memory stack update karein.
 -->
+
+---
+
+# Next Up: Multimodal Vision Input
+
+<div class="title-divider"></div>
+
+### Next Up: [Module 06 · Multimodal Vision](./06-vision-input.html)
+
+* **What we will cover next:**
+  * Enabling multimodal capabilities with vision models
+  * Encoding local image files into base64 strings in Go
+  * Understanding image-token grid mapping projection metrics
+  * Solving VRAM constraints and network payload bottlenecks
+* **Get ready to build sight-enabled AI systems!**
+
+<!-- 
+SPEAKER NOTES (Hinglish):
+Chalo ab next module par chalte hain! Agle class me hum seekhenge ki kaise images ko process karke context window structure extend karte hain aur local multimodal applications build karte hain. See you in the next module!
+-->
+
