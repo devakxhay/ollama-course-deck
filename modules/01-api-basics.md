@@ -46,7 +46,7 @@ style: |
   }
   pre code {
     background: transparent !important;
-    color: #f8fafc !important;
+    color: var(--color-text) !important;
     font-size: 0.85em;
     line-height: 1.6;
   }
@@ -119,54 +119,54 @@ style: |
 
 <span class="module-label">Module 01 · REST API Internals</span>
 
-# <!-- fit --> Ollama API Architecture
+# <!-- fit --> How Ollama APIs Work
 
 <div class="title-divider"></div>
 
-### `/api/generate` vs `/api/chat` — Production Mechanics
+### `/api/generate` vs `/api/chat` — Under the Hood
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Hello engineers! Agar aap local LLMs ko apne full-stack core backend controllers me integrate kar rahe ho, toh standard desktop clients ya WebUI ka use karna band karo. 
-Ollama background me ek persistent daemon architecture ke upar run hota hai, aur use code se target karne ke liye hamare paas do foundational REST endpoints hain: /api/generate aur /api/chat. 
-Aaj hum in dono pipelines ke core differences aur execution mechanics ko line-by-line breakdown karenge.
+Hey guys! Agar aap local LLMs ko apne real-world backend architectures me integrate kar rahe ho, toh generic desktop clients ya visual WebUIs se thoda aage badhna hoga.
+Ollama background me ek background daemon service ki tarah chalta hai, aur use target karne ke liye code me hamare paas do main pipelines hain: /api/generate aur /api/chat.
+Chalo dekhte hain in dono me raw differences kya hain, and code ke end par inhe kaise handle karte hain.
 -->
 
 ---
 
-# The Core Architectural Division
+# Chat vs. Generate: What is the Difference?
 
 <div class="columns">
 <div class="col">
 
 ### `/api/generate`
-* **Execution Pattern:** Single-turn atomic completion.
-* **Input Layer:** Flat prompt string.
-* **State Management:** Fully stateless transaction.
-* **Best Used For:** Automated parsing, strict text classification, code snippet writing.
+* **How it works:** One-time request and response.
+* **Input:** A simple text prompt.
+* **Memory:** No memory. Every request is fresh.
+* **Best for:** Simple tasks like reading data or sorting text.
 
 </div>
 <div class="col">
 
 ### `/api/chat`
-* **Execution Pattern:** Stateful multi-turn loops.
-* **Input Layer:** Structured message arrays.
-* **State Management:** Context managed via appended history.
-* **Best Used For:** Interactive conversational pipelines, stateful agents.
+* **How it works:** Back-and-forth conversation.
+* **Input:** A list of messages with roles (system, user).
+* **Memory:** You must send the history every time.
+* **Best for:** Building chatbots and AI agents.
 
 </div>
 </div>
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Ab screen par dono pipelines ka architectural structural division dekho. 
-Left side me hai generate endpoint—ye bilkul simple stateless worker hai. Ek clear task bheja, isne direct completion kiya, kaam khtam. Ko memory store nahi hoti. 
-Right side me hai chat endpoint—ye stateful logic design ke liye bana hai, jahan structural conversational hierarchy maintenance zaroori hai. Iske bina multi-turn conversations handle nahi kiye ja sakte.
+Dono endpoints ka main diff unke architectural design me hai.
+Left side par dekho: generate pipeline—ye ek task worker ki tarah kaam karta hai. Flat text inputs handle karta hai aur server par context save nahi karta.
+Right side par chat pipeline—ye complex conversational workflows ke liye hai jahan system, user aur assistant messages ka chronological history structure maintained rakhna padta hai.
 -->
 
 ---
 
-# Payload Blueprint <span class="badge">/api/generate</span>
+# How the <span class="badge">/api/generate</span> Request Looks 
 
 ```json
 {
@@ -181,13 +181,13 @@ Right side me hai chat endpoint—ye stateful logic design ke liye bana hai, jah
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Ye generate endpoint ka simple raw payload blueprint hai. 
-Model specifying, stream ko false karna (agar simple atomic completion chahiye), aur options context parameters define karna seekhein.
+Ye `/api/generate` ka flat execution call hai.
+Notice karo ki yahan seedha raw prompt pass ho raha hai. Streaming ko humne standard API response style me block kiya hai (`stream: false`) aur low temperature set kiya hai taaki hume solid, deterministic code generation mile.
 -->
 
 ---
 
-# Payload Blueprint <span class="badge">/api/chat</span>
+# How the <span class="badge">/api/chat</span> Request Looks 
 
 ```json
 {
@@ -208,14 +208,14 @@ Model specifying, stream ko false karna (agar simple atomic completion chahiye),
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Ab chat API ka schema dekho. Yahan simple prompt string ke bajaye ek structured messages array jata hai. 
-Har message me ek role hota hai—jaise system, user, ya assistant—aur unka content. 
-Ye message array pure conversational state ko build karne aur model ko behavior prompt dene ke kaam aata hai.
+Wahi agar `/api/chat` ka format dekhein, toh structure thoda change ho jata hai.
+Yahan raw string input ke bajaye hamara content `messages` array ke form me jata hai.
+Isme roles (jaise system behavior, user prompt) specify kiye jate hain, jisse model dynamically response context context-aware templates me convert kar sake.
 -->
 
 ---
 
-# Execution Telemetry: Output Performance Metrics
+# How to Read Performance Numbers
 
 <div class="columns">
 <div class="col">
@@ -238,51 +238,48 @@ Ye message array pure conversational state ko build karne aur model ko behavior 
 </div>
 <div class="col">
 
-* <span class="chip">load_duration</span> **VRAM Load Time** — Cold start overhead when model is not active in VRAM.
+* <span class="chip">load_duration</span> **Loading Time** — Time taken to load the model into memory.
 
-* <span class="chip">prompt_eval_count / duration</span> **Prompt Speed** — Tokens/sec = `count / duration × 1e9`.
+* <span class="chip">prompt_eval_count / duration</span> **Reading Speed** — How fast the system reads your prompt.
 
-* <span class="chip">eval_count</span> **Generation Throughput** — Actual inference speed of the model.
+* <span class="chip">eval_count</span> **Writing Speed** — How fast the model generates new words.
 
 </div>
 </div>
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Response payload ko closely check karo, niche telemetry metrics diye hain. 
-Total execution time total_duration me nano-seconds me aata hai. 
-Cold starts ke time load_duration ka VRAM overhead control karna hota hai. 
-Agar load_duration high hai, iska matlab hai model memory me persistent nahi tha. 
-Inference throughput ko analyze karne ke liye evaluation count ko eval_duration se calculate karte hain.
+Ollama response me solid performance metrics return karta hai.
+Sabse pehle check karo `load_duration`—agar model VRAM me unloaded tha toh heavy loading lagti hai.
+`prompt_eval_count` aur duration batate hain ki hamara prompt system ne kis latency rate se parse kiya, aur `eval_count` hume baseline inference throughput details deta hai.
 -->
 
 ---
 
-# Production Gotchas & Error Resolution
+# Common Problems and How to Fix Them
 
 <div class="callout">
-  <strong>⚡ VRAM Eviction Timeout</strong>
-  Ollama unloads models after 5 min of inactivity (<code>OLLAMA_KEEP_ALIVE=5m</code>).<br>
-  <span class="fix">→ Fix: Set <code>OLLAMA_KEEP_ALIVE=-1</code> to keep the model loaded indefinitely.</span>
+  <strong>⚡ Model Unloads Automatically</strong>
+  Ollama removes models from memory after 5 minutes of no use.<br>
+  <span class="fix">→ Fix: Set <code>OLLAMA_KEEP_ALIVE=-1</code> to keep the model loaded forever.</span>
 </div>
 
 <div class="callout">
-  <strong>📏 Context Length Limits</strong>
-  Default context window is 2048 tokens. Long chat histories get truncated silently.<br>
-  <span class="fix">→ Fix: Explicitly set <code>"num_ctx": 8192</code> in the <code>options</code> block.</span>
+  <strong>📏 Long Messages Get Cut Off</strong>
+  The default memory size is small. Large chats will lose older messages.<br>
+  <span class="fix">→ Fix: Add <code>"num_ctx": 8192</code> inside options.</span>
 </div>
 
 <div class="callout">
-  <strong>🔀 Concurrency Bottleneck</strong>
-  Single worker queue defaults to serial execution under load.<br>
-  <span class="fix">→ Fix: Set <code>OLLAMA_NUM_PARALLEL=4</code> to enable concurrent stream processing.</span>
+  <strong>🔀 Requests Wait in Line</strong>
+  Ollama handles requests one by one, slowing down multiple users.<br>
+  <span class="fix">→ Fix: Set env configuration <code>OLLAMA_NUM_PARALLEL=4</code> to run together.</span>
 </div>
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Production deployment me ye gotchas aapka experience kharab kar sakte hain. 
-Default behavior me 5 mins inactive rehne par model memory se offload ho jata hai, jisse next request par heavy cold start loading overhead face karna padta hai.
-Ise fix karne ke liye environment me OLLAMA_KEEP_ALIVE ko minus one set karo.
-Context window support defaults to 2048 tokens, large payloads and history preserve karne ke liye options object me num_ctx parameter manually provide karna zaroori hai.
-Concurrency handling ke liye, hardware resource availability ke according OLLAMA_NUM_PARALLEL set karna zaroori hai.
+Production systems me deploy karte time teen important settings hamesha dhyan me rakhein.
+Pehla, 5-minute timeout pe model memory se unload ho jata hai jiski wajah se first-hit call me bottleneck aata hai. Iske liye keep_alive environmental parameter minus one override set karein.
+Dusra, memory threshold by default standard 2k par capped hai, isliye options me num_ctx parameter bada set karein.
+Teesra, high concurrent traffic serve karne ke liye OLLAMA_NUM_PARALLEL configuration ka parallel execution set karna mat bhoolna.
 -->
