@@ -2,7 +2,7 @@
 marp: true
 theme: default
 paginate: true
-header: 'Ollama in Your Project'
+header: 'Building with Ollama: Local LLMs in Action'
 style: |
   @import "../templates/theme.css";
   section {
