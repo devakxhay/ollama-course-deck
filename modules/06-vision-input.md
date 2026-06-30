@@ -127,9 +127,10 @@ style: |
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Hey guys! Welcome back. Aaj hum baat karenge local systems me ek bohot hi powerful upgrade ke baare me—wo hai Multimodal Vision Input.
-Ab tak hum sirf textual queries handle kar rahe the, lekin modern local models jaise llama3.2-vision ya qwen2-vl directly raw images ko input ki tarah accept kar sakte hain.
-Is module me hum seekhenge ki backend code me images ko base64 format me encode karke model tak kaise push kiya jata hai.
+* Welcome back! Module 05 me humne conversational state aur memory context progress check kiya.
+* Par text queues ke alawa modern applications me images aur visual assets process karna mandatory step hai.
+* Aaj hum seekhenge ki base64 formatting options specify karke multi-modal datasets kaise target karte hain.
+* Hum textual tokenizers aur vision model components ke primary processing differences check karenge.
 -->
 
 ---
@@ -157,9 +158,9 @@ Is module me hum seekhenge ki backend code me images ko base64 format me encode 
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-In dono architectures ke dynamic structure differences ko check karte hain.
-Left side par dekhiye normal text-only models—yahan user input standard tokenizer ke through tokens me break hokar compute hota hai.
-Right side par check karein vision models—yahan model ke paas ek extra component hota hai jise Vision Encoder bolte hain. Ye image layers ko small patches me divide karke, unhe direct LLM ke dimensional token space me map kar deta hai.
+* Text-Only aur Multimodal models ke architectural differences ko closely evaluate karein.
+* Left side text pipeline raw token sequences space dimensions limits par operate karti hai.
+* Right side vision pipeline structural representations features vector map context space me project karti hai.
 -->
 
 ---
@@ -184,9 +185,9 @@ payload := map[string]interface{}{
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Go codebase implementation par focus karte hain.
-Pehle hum raw image file ko `os.ReadFile` se byte array me load karte hain, aur use base64 standard string format me convert kar dete hain.
-Request payload me notice karein: humne model parameters me llama3.2-vision specify kiya hai, aur images map structure array property me base64 variable pass kiya hai. Ye array dynamic multiple image uploads support karta hai.
+* Go program images integration flows aur base64 parsing details check karein.
+* os.ReadFile method target binary files read karke standard encoding array parameters transform karta hai.
+* Payload images array base64 bytes dynamically capture settings verify criteria load karta hai.
 -->
 
 ---
@@ -219,9 +220,9 @@ Request payload me notice karein: humne model parameters me llama3.2-vision spec
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Vision metrics and telemetry values ko evaluate karte hain.
-Left side response check karein: prompt_eval_count kafi high dikhega (424 tokens), jabki user prompt sirf single line text instructions tha.
-Right side par logic verify karein: aesa isliye hai kyunki Vision Encoder image structure size ke basis par use abstract token representations (patches) me map kar deta hai. Ye processing visual compute overhead add karti hai, jisse prompt_eval_duration text prompts ke मुकाबले significant scale par badh jata hai.
+* Multimodal performance parameters aur token telemetry limits analyze karein.
+* Input metrics eval count image dimensions complexity ke basis par linearly evaluate hotey hain.
+* Vision encoder compute calculations VRAM context memory utilization variables dynamic update level set karti hain.
 -->
 
 ---
@@ -248,10 +249,9 @@ Right side par logic verify karein: aesa isliye hai kyunki Vision Encoder image 
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Vision pipelines compile karte time production gotchas ka dhyan rakhein.
-Sabse pehle, agar image high-resolution raw file hai toh base64 size badhega aur system memory crash ho jayegi. Isliye client-side par scale down and JPG optimization filters execute karein.
-Doosra problem compatibility hai—hamesha target model parameter check karein. Agar model text-only hai toh payload ignore ho jayega, isliye llama3.2-vision model hi target karein.
-Teesra network payload overhead hai—ensure dynamic network connections stable ho aur timeouts configurations properly handles ho backend side par.
+* Vision pipelines gotchas optimization rule settings checks run karein.
+* Image compression logic apply karke network weight sizes aur GPU bottlenecks control setups configure check karein.
+* Text models image calls limitations safety checks verification options backend structures check criteria run karein.
 -->
 
 ---
@@ -271,6 +271,8 @@ Teesra network payload overhead hai—ensure dynamic network connections stable 
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Chalo ab next module par chalte hain! Agle class me hum seekhenge ki kaise functions calling schemas compile karte hain aur APIs aur local database integration triggers implement karte hain. See you in the next module!
+* Multimodal vision inputs aur base64 payload configurations setup completed.
+* Lekin static inputs analysis passive feedback pipelines tak restricted hai, real action capability check nahi kar sakti.
+* Agle module (Module 07) me hum autonomous database updates aur active API executions ke liye Tool Use structures check karenge. Let's proceed!
 -->
 

@@ -127,9 +127,10 @@ style: |
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Hey guys! Welcome back. Aaj hum baat karenge local application integration ke ek bohot important pillars ke baare me—wo hai Structured Output.
-Jab hum raw LLMs use karte hain, toh wo random text, conversational explanations, ya formatting errors return karte hain jise hamare backend systems direct parse nahi kar pate.
-Is session me hum dekhenge ki kaise Ollama ke built-in JSON Mode ko leverage karke hum system-level valid schemas produce kara sakte hain.
+* Welcome back! Module 02 me humne perceived latency drop karne ke liye dynamic streaming check kiya.
+* Par backend services aur production pipelines me plain text outputs parse karna bohot unpredictable ho sakta hai.
+* Aaj hum seekhenge ki kaise structure parsing failure errors ko solve karne ke liye Ollama ka JSON Mode configure kiya jata hai.
+* Hum raw textual results aur schema-constrained outputs ke difference aur implementations ko check karenge.
 -->
 
 ---
@@ -157,9 +158,9 @@ Is session me hum dekhenge ki kaise Ollama ke built-in JSON Mode ko leverage kar
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-In dono patterns me difference samajhna zaroori hai.
-Left side par dekhein: jab hum normal request bhejte hain, toh model conversational context generate karta hai jaise "Here is the details you requested" aur codeblocks me JSON wrap kar deta hai. Ye standard parser ko crash kar deta hai.
-Right side par check karein: Ollama me format: "json" config pass karne par, model ka sampling layer target tokens ko constrain karta hai taaki direct, raw, and pure JSON output generate ho bina kisi text wrapper ke.
+* Raw Text Output aur schema-enforced JSON Mode ka primary difference analyze karein.
+* Left side par normal generation flow dynamic conversational text return karta hai, jo system configurations crash kar sakta hai.
+* Right side par constraints schema apply hone se compiler parsing backend parameters JSON syntax compliance restrict kar dete hain.
 -->
 
 ---
@@ -185,10 +186,9 @@ json.Unmarshal([]byte(apiResponse.Response), &data)
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Chalo iska backend pipeline implementation check karte hain.
-Sabse pehle hum local target schema setup karte hain struct mapping define karke.
-Request call ke execution payload body me notice karein: hume prompt me clean metadata instructions ke sath explicit format: "json" set karna padta hai.
-HTTP response capture hone par, response key ke andar pure string value me structured output dynamic JSON text return hota hai, jise hum directly target struct fields me parse kar sakte hain.
+* Program pipelines implementation setups Go targets define karein.
+* Payload creation options array configuration check parameters me format JSON specify kiya jata hai.
+* HTTP response payload target structs me unmarshal karke key parameters value verification levels pass kiye jate hain.
 -->
 
 ---
@@ -219,9 +219,9 @@ HTTP response capture hone par, response key ke andar pure string value me struc
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Inference call ke response JSON payload mapping ko deepdive karein.
-Left side par dekhiye: response raw string structure key-value map format me structured data content dynamically represent karta hai.
-Ollama system backend par compiler schema constraint apply karta hai. System dynamic logic layers control karta hai taaki open-braces and close-braces perfectly close and maintain ho sake.
+* System output response return formatting payload target evaluation parameter check karein.
+* Left column data metrics string representation return structures dynamic values contain karta hai.
+* System backend parameter sampling steps verify validation ensure karte hain brackets open/close status mapping rules resolve karne ke liye.
 -->
 
 ---
@@ -248,10 +248,9 @@ Ollama system backend par compiler schema constraint apply karta hai. System dyn
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Structured outputs use karte time production environment me in gotchas ka dhyan rakhein.
-Sabse pehle, agar aapne input parameters me format to json set kiya hai but prompt me word JSON explicit include nahi kiya toh model runtime parsing par crash ya freeze ho sakta hai. Isliye instructions me "JSON" compile keyword standard practice banalein.
-Doosra, standard validation levels syntax validity tak restricted hai, schema structural checks (keys correctness) verify karne ke liye client side par validation filter execute karein.
-Teesra, model infinite structures formatting loops me na fas jaye, isliye output sizes control constraints configuration standard options me set karein.
+* JSON generation pipeline gotchas aur constraints solutions trace details check karein.
+* Prompt input details compile levels me "JSON" keyword use karna strict mandatory protocol hai server side freezing block avoid karne ke liye.
+* Output size parameter constraints validation verify settings local client checks rules filter apply karein.
 -->
 
 ---
@@ -271,6 +270,8 @@ Teesra, model infinite structures formatting loops me na fas jaye, isliye output
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Chalo ab next module par chalte hain! Agle class me hum seekhenge ki kaise system level custom roles define kiye jate hain aur application ke boundaries rules configure kiye jate hain. See you in the next module!
+* JSON Mode structured data delivery aur execution validation setup module complete hota hai.
+* Lekin simple structured queries parameters direct system limits control configurations settings handle nahi kar sakti.
+* Agle module (Module 04) me hum system-level rules define karne ke liye System Prompts configurations aur constraints methods check karenge. Let's start!
 -->
 

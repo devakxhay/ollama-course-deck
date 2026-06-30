@@ -127,9 +127,10 @@ style: |
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Hey guys! Welcome back. Aaj hum baat karenge ek bohot hi technical concepts ke baare me—aur wo hai FIM, yaani Fill-in-the-Middle, aur Raw Prompt Mechanics.
-Agar hume code completion editor extension build karna ho, toh normal left-to-right generation kaam nahi aati. Hume beech me missing code content fill up karna hota hai.
-Is module me hum seekhenge ki kaise special tokens apply karte hain aur raw property bypass configure karte hain.
+* Welcome back! Module 07 me humne external APIs dynamically call karne ke liye function calling check kiya.
+* Par code autocompleters aur standard code editors me general chat templates inference format corrupt kar sakti hain.
+* Aaj hum FIM (Fill-in-the-Middle) algorithms aur raw prompts input interfaces implementation flow check karenge.
+* Hum linear code completions aur structured prefix-suffix infilling methods compare karenge.
 -->
 
 ---
@@ -157,9 +158,9 @@ Is module me hum seekhenge ki kaise special tokens apply karte hain aur raw prop
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-In dono paradigms ke behavioral difference ko check karte hain.
-Left column me dekhein standard Append-Only—ye normal GPT models ki tarah hai, ye sirf current line ke aage code generate karta hai. Ise suffix code syntax structure ka koi idea nahi hota.
-Right side check karein FIM—ye specialized code completion models ka structure hai. Model text document ko prefix, suffix aur middle arrays segments me split karke process karta hai taaki existing brackets and imports block balance me rahein.
+* Append-Only aur Fill-in-the-Middle parameters differences ko study karte hain.
+* Left side standard sequence updates only cursor movement base line par target predict karti hain.
+* Right side model suffix text code blocks reads perform karke middle gap output generate karta hai.
 -->
 
 ---
@@ -183,9 +184,9 @@ payload := map[string]interface{}{
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Go implementation par focus karte hain.
-Yahan humne normal text sending ke bajaye format prompt template define kiya hai. Hum prefix aur suffix sections compile karte hain, aur unhe special tokens `<fim_prefix>`, `<fim_suffix>`, aur `<fim_middle>` standard variables string me merge kar dete hain.
-Request payload me notice karein: humne explicit `"raw": true` set kiya hai taaki Ollama model ka default system/chat format wrapper skip karde aur string direct engine context feed me push ho sake.
+* Go program templates FIM prompt formatting structures details check karein.
+* Prefix-suffix components custom tags configurations strings me join kiye jate hain.
+* Request body parameter option raw set properties default formats skip update verify karta hai.
 -->
 
 ---
@@ -216,9 +217,9 @@ Request payload me notice karein: humne explicit `"raw": true` set kiya hai taak
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-FIM execution telemetry and response check karte hain.
-Left column check karein: response body me hume target gap complete code `return a + b` directly receive hua hai. Koi explainatory code text ya wrappers nahi hain.
-Right column metrics analyze karein: raw true option specify hone par prompt direct execution parameters evaluate karta hai. Model output exact context template me balance ho jata hai.
+* Telemetry response metrics raw parameters verify options evaluate check karein.
+* Response body content direct gap code block contents return formats capture karta hai.
+* System raw override default chat structures properties direct compute setup verify checks execute karta hai.
 -->
 
 ---
@@ -245,10 +246,9 @@ Right column metrics analyze karein: raw true option specify hone par prompt dir
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Raw prompts execute karte time production challenges aur resolutions check karein.
-Pehla issue runaway generation ka hai—model logic repeat kar sakta hai, isse bachne ke liye stop keywords list (jaise suffix tokens ya newline stop keys) payload configurations me pass karein.
-Doosra problem token format syntax mismatch hai—Qwen ya Llama coder systems different identifiers use karte hain, isliye documentation base format map verify karein.
-Teesra gotcha template wrapping ka hai—bina raw key configuration model normal prompt assume karke special tags output nullified kar deta hai.
+* Production deployment setups raw gotchas control limits check karein.
+* Runaway output generation problems stop keywords array configurations limits trigger save options handle karein.
+* Models tags mismatch specifications check parameters alignment configurations setup verify standard karein.
 -->
 
 ---
@@ -268,6 +268,8 @@ Teesra gotcha template wrapping ka hai—bina raw key configuration model normal
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Chalo ab next module par chalte hain! Agle class me hum seekhenge ki kaise text blocks ko numeric vector representation maps me convert karte hain aur similarity operations perform karte hain. See you in the next module!
+* FIM algorithms aur raw prompt settings override setup successfully completed.
+* Lekin local files matching aur semantic operations direct text comparisons logic block par build nahi kiye ja sakte.
+* Agle module (Module 09) me hum document semantic similarities search aur text vector representation methods check karenge. Let's move!
 -->
 

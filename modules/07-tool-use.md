@@ -127,9 +127,10 @@ style: |
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Hey guys! Welcome back. Aaj hum baat karenge ek bohot hi interesting topic ke baare me—wo hai Function Calling & Tool Use.
-LLMs static hote hain, unhe real-time information (jaise current stock prices, weather details, ya DB queries) ka access nahi hota.
-Is module me hum seekhenge ki kaise hum standard tools schemas define karte hain taaki local model intelligently code context me function arguments generate kar sake.
+* Welcome back! Module 06 me humne raw images load karke vision-based systems build karna seekha.
+* Par dynamic applications ko static data models ke aage badh kar real-time APIs aur active execution functions ki zaroorat hoti hai.
+* Aaj hum seekhenge ki model constraints parameters ke sath system function declaration schemas kaise configure karein.
+* Hum direct conversational replies aur structural tool calling differences compare karenge.
 -->
 
 ---
@@ -157,9 +158,9 @@ Is module me hum seekhenge ki kaise hum standard tools schemas define karte hain
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-In dono execution structures ke workflow ko compare karte hain.
-Left side par dekhiye standard Chat—yahan model query read karke normal conversational paragraphs throw kar deta hai.
-Right side check karein Function Calling—yahan model standard answer dene ke bajaye ek structural JSON output return karta hai jo batata hai ki target function 'name' kya hai aur 'arguments' parameter parameters kya hain. Client application is action parameters ko consume karke dynamic code compute kar sakta hai.
+* Direct Chat aur Function Calling pipelines ke workflow differences ko check karein.
+* Left side standard chat user flow normal text format sequences return karta hai.
+* Right side model standard conversation block ignore karke structured parameter keys list contain karta hai.
 -->
 
 ---
@@ -186,9 +187,9 @@ payload := map[string]interface{}{
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Go client payload mapping par focus karein.
-Hum request maps payload parameter structure ke andar explicit `"tools"` key specify karte hain. Yahan humne function metadata target schema setup kiya hai.
-Function object structure parameters me name GetStockPrice aur parameter properties parameter define kiya hai jo batata hai ki symbol property string input required segment validation map me defined hai.
+* Go client payload mapping data elements check karein.
+* Request JSON body properties options list me target tools metadata parameter declare kiya hai.
+* Models instructions details schema rules mapping evaluate settings parameter details load karti hain.
 -->
 
 ---
@@ -229,9 +230,9 @@ Function object structure parameters me name GetStockPrice aur parameter propert
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Model output aur telemetry values analyze karte hain.
-Left column payload check karein: response body data me content section empty hai par assistant role mapping state inside tool_calls list object populate hua hai.
-Right column details check karein: tool_calls flag check hotey hi frontend logic understand kar leta hai ki function trigger call select hui hai, arguments parameter property symbol me AAPL parsing successfully model sampling logic target criteria verify kar chuka hai.
+* Model output validation aur telemetry fields parse karein.
+* Response body content check mapping index standard array object tool call data return karta hai.
+* Dynamic argument values validation parsing steps application logic backend verify options checks pass karta hai.
 -->
 
 ---
@@ -258,10 +259,9 @@ Right column details check karein: tool_calls flag check hotey hi frontend logic
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Tool pipelines compile karte time production rules gotchas dhyan rakhein.
-Pehla parameter error structural parsing failures hallucination ka hai—model random properties fill up kar deta hai, isliye arguments unmarshal filter checks backend validation layers standard follow karein.
-Doosra problem looping issues hai—model tool run loops me fas jata hai, client logic loop counter limit setup karein.
-Teesra engine capabilities check hai—complex tools mappings parse karne ke liye standard models ke bajaye optimized tool models target karein.
+* Tool usage production environments issues and solutions check karein.
+* Arguments validation mapping check limits criteria check apply karein.
+* Infinite iteration loops control karne ke liye maximum recursion limit rules register details evaluate karein.
 -->
 
 ---
@@ -281,6 +281,8 @@ Teesra engine capabilities check hai—complex tools mappings parse karne ke liy
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Chalo ab next module par chalte hain! Agle class me hum seekhenge ki kaise custom raw prompts feed karte hain aur FIM templates parsing use karke code completion engine trigger design kiya jata hai. See you in the next module!
+* Autonomous function calling schemas aur tool executions setup completed.
+* Lekin normal API messages hamesha standard chat template structure layers bypass nahi kar sakte.
+* Agle module (Module 08) me hum template engines overrides aur Fill-in-the-Middle code completion setups check karenge. Let's move!
 -->
 

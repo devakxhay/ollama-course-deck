@@ -127,7 +127,10 @@ style: |
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Hey guys! Welcome to the course "Building with Ollama: Local LLMs in Action". Aaj hum baat karenge ki hume local AI ki zaroorat kyun hai, market me iske alawa kaun se tools available hain, aur Ollama in sabse kaise behtar hai. Hum course ka roadmap aur language strategy bhi check karenge.
+* Welcome guys! "Building with Ollama: Local LLMs in Action" course me aapka swagat hai.
+* Aaj hum samjhenge ki local AI ki actual demand aur benefits kya hain.
+* Hum market ke different engines aur desktop client options compare karenge.
+* Last me, course roadmap aur program implementation language choice discuss karenge.
 -->
 
 ---
@@ -155,10 +158,9 @@ Hey guys! Welcome to the course "Building with Ollama: Local LLMs in Action". Aa
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Sabse pehle samajhte hain—Why Local AI? Cloud APIs jaise OpenAI ya Claude bohot badhiya hain, par production systems me local AI ke teen bade fayde hain:
-Pehla hai privacy—aapka proprietary data server se bahar nahi jata.
-Doosra hai cost—yahan koi per-token bill ya subscription nahi hai. Unlimited runs completely free hain.
-Teesra hai reliability aur latency—bina internet ke bhi microsecond latency par local models response generate karte hain bina kisi rate limits ke.
+* Sabse pehle discuss karte hain data privacy ko—aapka dynamic input data aur system prompts bilkul secure rehte hain.
+* Second factor hai billing cost—token size ya api calls badhne se koi monthly billing surge nahi hota.
+* Third parameter reliability aur latency hai—bina local internet network dependency ke high speed responses microsecond latency par access ho jate hain.
 -->
 
 ---
@@ -184,11 +186,11 @@ Teesra hai reliability aur latency—bina internet ke bhi microsecond latency pa
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Local LLMs chalane ke liye market me kayi saare tools hain.
-Llama.cpp bilkul bare-metal engine hai, jo bohot fast hai par configurations bohot hard hain.
-vLLM production servers ke liye best hai par uske liye heavy GPU stack chahiye hota hai.
-LM Studio jaise tools me badhiya GUI milta hai but code integration aur deployment workflow thoda clumsy ho jata hai.
-Aur phir aata hai Ollama—jo dono worlds ke best parts ko blend karta hai.
+* Local AI development pipeline me custom execution choices bohot saari hain.
+* Llama.cpp high-performance bare-metal engine hai par complex setups aur configurations require karta hai.
+* vLLM high throughput clusters ke liye optimized hai par resource-intensive GPU requirements demand karta hai.
+* LM Studio UI access ke liye theek hai par programmatic integration aur scaling support me limitation hai.
+* Ollama in sabko simplify karta hai standard developer APIs aur smooth integration flow ke sath.
 -->
 
 ---
@@ -216,10 +218,10 @@ Aur phir aata hai Ollama—jo dono worlds ke best parts ko blend karta hai.
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Ollama ka design bilkul Docker ki tarah hai. Ek single command se model pull aur run ho jata hai.
-Aapko raw weights ya configuration layers manage karne ki zaroorat nahi padti.
-Background me ye ek lightweight API service chalta hai jo JSON format me generate aur chat endpoints expose karta hai.
-Sabse best part ye hai ki ye automatic resource balancing karta hai—agar GPU available hai toh GPU use karega, nahi toh CPU par fall back ho jayega.
+* Ollama ka development model Docker structure par based hai jo setup aur orchestration easy banata hai.
+* Hum dynamic `ollama run` instructions trigger karke configurations aur weights check resolve kar sakte hain.
+* Local runtime environments background api services spin up karte hain, jo HTTP endpoints expose karti hain.
+* System automatically hardware check run karke workload divide karta hai CPU aur active GPUs ke beech.
 -->
 
 ---
@@ -247,10 +249,10 @@ Sabse best part ye hai ki ye automatic resource balancing karta hai—agar GPU a
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Is course me hum apna Ollama project Go language ka use karke banayenge. Lekin agar aap Python, JavaScript, ya Java developer hain, toh bilkul tension mat lijiye aur tab close mat kariye!
-AI ke is era me programming language sirf syntax noise hai. Agar hum syntax par zyada focus karenge, toh main concepts miss kar denge. 
-Hum language ko completely ignore nahi karenge—agar koi Go-specific issue ya type mismatch aayega toh hum use jaldi se fix karke aage badhenge. Lekin apni core energy language par waste mat kijiye.
-Focus kijiye concepts par: context kaise manage karna hai, streaming kaise handle karni hai, aur AI apps kaise architect karni hain. Jo logic aap yahan seekhenge, wo aapki workspace language me perfect translate hoga.
+* Hum is project code execution me Go language use karenge par structure flexible hai.
+* Aap python, javascript ya kisi bhi programming language me system code structure design kar sakte hain.
+* Core engine design and API specs runtime inputs me common patterns follow karte hain.
+* Focus concepts par hona chahiye jaise memory handling, token parsing, and response buffers.
 -->
 
 ---
@@ -280,10 +282,10 @@ Focus kijiye concepts par: context kaise manage karna hai, streaming kaise handl
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Is series me hum total 10 episodes cover karenge—bilkul zero fluff aur straight to capability. 
-Pehle hum API basics aur backend languages se calling seekhenge. Phir streaming aur JSON structured output par jump karenge.
-Aage chal kar hum system prompts, vision input, function calling, FIM (Fill-in-the-Middle) code completion aur embeddings cover karenge.
-Last me hum ek full-blown capstone mini local agent build karenge jo in saare concepts ko aapas me integrate karega.
+* Purane basic pipelines se lekar advance autonomous capabilities tak total 11 detailed modules plan hain.
+* Hum REST calls aur payload optimization se cover karna shuru karenge.
+* Next phase me streaming, JSON structures, system behaviors, memory loops, aur vision endpoints check karenge.
+* Project wrap capstone local agent development aur production deployment configs ke sath hoga.
 -->
 
 ---
@@ -302,5 +304,7 @@ Last me hum ek full-blown capstone mini local agent build karenge jo in saare co
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Toh chaliye guys, is journey ko shuru karte hain! Agle module me hum seedha REST API Internals par jump karenge. Hum API endpoints, payloads, latency metrics, aur production setups ko live test karenge. Let's get started!
+* Chaliye is execution path ko practical direction dete hain.
+* Agle module me hum seedhe server backend structures aur raw api payloads analyze karenge.
+* Hum `/api/generate` aur `/api/chat` ke differences code benchmarks ke sath cover karenge. Let's start!
 -->

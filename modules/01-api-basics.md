@@ -127,9 +127,10 @@ style: |
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Hey guys! Agar aap local LLMs ko apne real-world backend architectures me integrate kar rahe ho, toh generic desktop clients ya visual WebUIs se thoda aage badhna hoga.
-Ollama background me ek background daemon service ki tarah chalta hai, aur use target karne ke liye code me hamare paas do main pipelines hain: /api/generate aur /api/chat.
-Chalo dekhte hain in dono me raw differences kya hain, and code ke end par inhe kaise handle karte hain.
+* Welcome back! Module 00 me humne overview liya, ab hum actual code integration ki taraf badhenge.
+* Local application backend ke liye hum generic visual web clients ya desktop apps par rely nahi karenge.
+* Ollama background engine dynamic endpoints expose karta hai: `/api/generate` aur `/api/chat`.
+* Aaj hum in dono ke internal payloads aur difference ko detail me analyze karenge.
 -->
 
 ---
@@ -159,9 +160,9 @@ Chalo dekhte hain in dono me raw differences kya hain, and code ke end par inhe 
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Dono endpoints ka main diff unke architectural design me hai.
-Left side par dekho: generate pipeline—ye ek task worker ki tarah kaam karta hai. Flat text inputs handle karta hai aur server par context save nahi karta.
-Right side par chat pipeline—ye complex conversational workflows ke liye hai jahan system, user aur assistant messages ka chronological history structure maintained rakhna padta hai.
+* Dono endpoints ke structural designs me core architectural difference hai.
+* Left side par `/api/generate` pipeline flat requests ko target karti hai aur koi conversational history retain nahi karti.
+* Right side par `/api/chat` setup complex messaging workflows ke liye customized role structures array use karta hai.
 -->
 
 ---
@@ -181,8 +182,9 @@ Right side par chat pipeline—ye complex conversational workflows ke liye hai j
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Ye `/api/generate` ka flat execution call hai.
-Notice karo ki yahan seedha raw prompt pass ho raha hai. Streaming ko humne standard API response style me block kiya hai (`stream: false`) aur low temperature set kiya hai taaki hume solid, deterministic code generation mile.
+* `/api/generate` payload execution ka straight structure dekhein.
+* Yahan simple parameter configuration options ke sath direct raw prompt string input format pass kiya hai.
+* Humne low temperature values select ki hain taaki code suggestions predictable aur strict generated logic ke sath mil sakein.
 -->
 
 ---
@@ -208,9 +210,9 @@ Notice karo ki yahan seedha raw prompt pass ho raha hai. Streaming ko humne stan
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Wahi agar `/api/chat` ka format dekhein, toh structure thoda change ho jata hai.
-Yahan raw string input ke bajaye hamara content `messages` array ke form me jata hai.
-Isme roles (jaise system behavior, user prompt) specify kiye jate hain, jisse model dynamically response context context-aware templates me convert kar sake.
+* `/api/chat` call ka data payload input dynamic arrays contain karta hai.
+* Roles parameter options jaise system instructions aur user entries dynamically specify kiye jate hain.
+* Model inputs dynamically update hotey hain multi-turn history keep-alive and mapping features check karne ke liye.
 -->
 
 ---
@@ -249,9 +251,9 @@ Isme roles (jaise system behavior, user prompt) specify kiye jate hain, jisse mo
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Ollama response me solid performance metrics return karta hai.
-Sabse pehle check karo `load_duration`—agar model VRAM me unloaded tha toh heavy loading lagti hai.
-`prompt_eval_count` aur duration batate hain ki hamara prompt system ne kis latency rate se parse kiya, aur `eval_count` hume baseline inference throughput details deta hai.
+* Telemetry response parameters runtime operations check parameters target karte hain.
+* Load duration latency batata hai ki model loading processes VRAM cache initialization state load limits me kitna lagta hai.
+* Prompt eval parameter prompt evaluation limits trace batata hai jabki eval status baseline speed output rate tokens/sec calculations evaluate karta hai.
 -->
 
 ---
@@ -278,10 +280,9 @@ Sabse pehle check karo `load_duration`—agar model VRAM me unloaded tha toh hea
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Production systems me deploy karte time teen important settings hamesha dhyan me rakhein.
-Pehla, 5-minute timeout pe model memory se unload ho jata hai jiski wajah se first-hit call me bottleneck aata hai. Iske liye keep_alive environmental parameter minus one override set karein.
-Dusra, memory threshold by default standard 2k par capped hai, isliye options me num_ctx parameter bada set karein.
-Teesra, high concurrent traffic serve karne ke liye OLLAMA_NUM_PARALLEL configuration ka parallel execution set karna mat bhoolna.
+* Production setups deploy karte time configurations limits parameters analyze karein.
+* Dynamic timeout behavior manage karne ke liye model keep_alive parameters minus one override config options default set karein.
+* Baseline context memory limitation parameters default sizes badha kar num_ctx aur dynamic high concurrent request handling settings scale update verify karein.
 -->
 
 ---
@@ -301,5 +302,7 @@ Teesra, high concurrent traffic serve karne ke liye OLLAMA_NUM_PARALLEL configur
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Toh chaliye agle module me badhte hain! Agle episode me hum dekhenge ki latency issue ko solve karne ke liye streaming responses ko code me kaise implement karte hain, aur reverse proxies ke configurations ko kaise fix kiya jata hai. See you there!
+* Is module me humne REST base structures aur performance parameter reading trace complete kar liya hai.
+* Lekin production systems me long execution queries perceived latency badha sakti hain.
+* Agle module (Module 02) me hum time-to-first-token delay trace bypass karne ke liye response streaming set methods check karenge. Let's proceed!
 -->

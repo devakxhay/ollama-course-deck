@@ -127,10 +127,10 @@ style: |
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Hey guys! Welcome to the final outro module of this course.
-Humne is course me dynamic local LLM workflows, context window configurations, aur tool execution loops build karna seekh liya hai.
-Ab jab aapka application local sandbox se nikal kar production level par move karega, toh scale-out architectures, concurrent scheduling, aur load balancing parameters ko handle karna hoga.
-Chalo dekhte hain local configurations se production infrastructure me transitioning kaise execute hoti hai.
+* Welcome back! Module 10 me humne cognitive ReAct loops orchestrate karke local agent system design compare kiya.
+* Aaj is final module me hum local sandbox parameters se production scaling methods explore karenge.
+* Hum scale-out architectures, request load balancing, concurrency, aur scheduling configurations check karenge.
+* Chalo local development runtime configurations se production clusters deployment steps verify karte hain.
 -->
 
 ---
@@ -158,9 +158,9 @@ Chalo dekhte hain local configurations se production infrastructure me transitio
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Chalo is scalability transition ke primary difference ko evaluate karte hain.
-Left column me check karein Local Sandbox—ye hamara local setup hai jahan resources limited hain (jaise 4GB VRAM) aur runtime updates user-specific execution par restricted hain.
-Right column me check karein Production Cluster—yahan dynamic scaling pipelines apply hoti hain. Model weights persistent nodes par load-balanced state me memory caches me store rehte hain, aur requests container orchestrator ke through distribute hoti hain.
+* Local sandboxes aur scale clusters setups me key difference check karein.
+* Left side local instance setups single user queue runtime limits standard par restrict rakhte hain.
+* Right side production servers dynamic microservices nodes, resource pools and scale balancing verify karte hain.
 -->
 
 ---
@@ -198,9 +198,9 @@ Right column me check karein Production Cluster—yahan dynamic scaling pipeline
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Serving scaling architecture par focus karte hain.
-Left side details me scale parameters check karein—load balancer configuration client connection distribute karti hai. Model load timeouts save karne ke liye keep_alive parameter always keep loaded setting `minus one` set kiya jata hai.
-Right side architecture topology diagram me dekhein—dynamic load balancer requests distribute karke separate nodes (jaise multi-gpu server setups) par send karta hai, jisse compute overhead parallel state target criteria verify karta hai.
+* Multiple GPU instances scale-out options evaluate karein.
+* Left side load balancing parameters parameters set aur keep_alive keep parameter minus one logic set verify.
+* Right side topology setups request execution nodes divide parameters load distribution criteria test karte hain.
 -->
 
 ---
@@ -227,9 +227,9 @@ Right side architecture topology diagram me dekhein—dynamic load balancer requ
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Production telemetry monitoring details check karte hain.
-Left column metrics verify karein—scaling node validation check karne ke liye token generation speed throughput aur active request backlog metrics calculate kiye jate hain.
-Right column check metrics trace—VRAM allocation limits and temperature parameters check parameters determine karte hain ki server hardware peak loads comfortably absorb kar raha hai ya system scale out threshold target compute limit check cross ho chuki hai.
+* Active production monitoring dashboard configurations evaluate check karein.
+* Tokens/sec performance speed metrics base thresholds levels verify check karein.
+* GPU queue backlogs aur VRAM memory checks target scale configurations threshold monitor verify.
 -->
 
 ---
@@ -256,8 +256,9 @@ Right column check metrics trace—VRAM allocation limits and temperature parame
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Final production gotchas and optimizations safety rules check karte hain.
-Pehla gotcha queue congestion ka hai—multitenant setups concurrency bottlenecks lock limits hit karte hain, isse override karne ke liye OLLAMA_NUM_PARALLEL environmental parameters standard check setup badhayein.
-Doosra issue weights loading delays network overhead ka hai—cold start delays avoid karne ke liye weights data volumes local disks layer mounts me store rakhein.
-Teesra out of memory GPU failures crash checks hai—memory allocations balance and protect configurations parameters configure karein.
+* Final production gotchas and optimizations safety rules check karte hain.
+* Pehla gotcha queue congestion ka hai—multitenant setups concurrency bottlenecks lock limits hit karte hain, isse override karne ke liye OLLAMA_NUM_PARALLEL environmental parameters standard check setup badhayein.
+* Doosra issue weights loading delays network overhead ka hai—cold start delays avoid karne ke liye weights data volumes local disks layer mounts me store rakhein.
+* Teesra out of memory GPU failures crash checks hai—memory allocations balance and protect configurations parameters configure karein.
+* Is module ke sath humne course ke saare dimensions cover kar liye hain. Happy building!
 -->

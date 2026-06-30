@@ -127,9 +127,9 @@ style: |
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Hey guys! Welcome back. Aaj hum baat karenge ek bohot hi critical production issue ke baare me—aur wo hai latency.
-Jab hum kisi LLM se bada response generate karate hain, toh user ko wait karna padta hai jab tak full JSON respond na ho jaye.
-Is class me hum seekhenge ki kaise streaming responses ka use karke hum application ki perceived latency ko drop kar sakte hain aur Time to First Token ko optimize kar sakte hain.
+* Welcome back! Module 01 me humne REST APIs call metrics check kiye the par direct request block me long generation times bottleneck create karte hain.
+* Aaj hum perceived latency aur time-to-first-token parameters improve karne ke liye streaming implementation compare karenge.
+* Hum response block buffering aur real-time streaming pipelines ke architectural patterns analyze karenge.
 -->
 
 ---
@@ -157,9 +157,9 @@ Is class me hum seekhenge ki kaise streaming responses ka use karke hum applicat
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Chalo iske architecture ko samajhte hain.
-Left side par dekho standard buffering: jab `stream: false` hota hai, tab Ollama tab tak wait karta hai jab tak complete generation khatam na ho jaye, and fir single large JSON return karta hai. Isse user ko lagta hai ki app stuck ho gayi hai.
-Right side par streaming hai: jab `stream: true` hota hai, toh har ek single token generate hote hi system network chunk ke through deliver karne lagta hai. Client screen par typing effect show kar sakta hai bina waiting state ke.
+* Standard buffering aur dynamic response streaming ka structural setup analyze karein.
+* Standard flow me client completely wait karega jab tak model end-of-sequence token encounter nahi kar leta.
+* Streaming setup activation se hardware memory generation chunks line-by-line real-time me push hone lagte hain.
 -->
 
 ---
@@ -189,9 +189,9 @@ for scanner.Scan() {
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Backend logic me stream ko handle karna bohot simple hai.
-Yahan hum Go standard library use kar rahe hain. http.Post call ke baad hum poori body ko memory me read karne ke bajaye bufio.NewScanner create karte hain.
-scanner.Scan() loop tab tak chalega jab tak network se lines (JSON lines) aati rahengi. Har single line ko parse karke hum print karte rehte hain, jisse real-time output stream generate ho sake.
+* Backend connection setup aur response body data stream process flow check karein.
+* Go buffer memory scanner use karke hum chunks dynamically read karte hain.
+* Newline characters scan parsing loop apply karke output console par feed kiya jata hai.
 -->
 
 ---
@@ -217,9 +217,9 @@ scanner.Scan() loop tab tak chalega jab tak network se lines (JSON lines) aati r
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Ab check karte hain raw response payload format.
-Inference start hote hi Ollama server dynamic JSON chunks return karta hai. Har intermediate chunk me done: false hota hai aur dynamic token input stream text pass hota hai.
-Terminal chunk, yani last JSON object me done: true aata hai aur response text empty hota hai. Yahan execution metadata details jaise load_duration, prompt_eval_count aur generation speed key-values return hote hain.
+* Raw telemetry endpoints return formats dynamic responses specify karte hain.
+* Har early token generation payload object `done: false` state and text string returns execute karta hai.
+* Final message packet boundary reach hone par `done: true` dynamic context metrics metadata payload block load karta hai.
 -->
 
 ---
@@ -246,10 +246,9 @@ Terminal chunk, yani last JSON object me done: true aata hai aur response text e
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Production deployment ke time streaming me do-teen bade issue aate hain.
-Pehle, reverse proxies jaise Nginx default settings par pure response ko buffer karne ki koshish karte hain, jisse streaming work nahi karti. Iske liye X-Accel-Buffering: no response header bhejna zaroori hai.
-Doosra, user connections bich me drop ho sakte hain, isliye state-saving fallback layers logic backend par execute hona chahiye.
-Aur third, scanning logic hamesha explicit newline boundary scan par based hona chahiye taaki corrupted lines throw na ho.
+* Production load deployments limits problems control methods verify karein.
+* Proxies settings update rule setting headers control jaise `X-Accel-Buffering` parameter default configure set karein.
+* Memory packet drops resolve logic offsets aur standard scan buffer boundaries carefully check karein.
 -->
 
 ---
@@ -269,6 +268,8 @@ Aur third, scanning logic hamesha explicit newline boundary scan par based hona 
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Chalo ab next module par chalte hain! Agle class me hum seekhenge ki kaise custom JSON mode configure kiya jata hai aur outputs ko structured database pipelines ke liye ready kiya jata hai. See you in the next module!
+* Humne raw response streaming setups successfully complete target evaluate kiya hai.
+* Par custom backend APIs build karte time dynamic plain strings standard pipelines me error create kar sakti hain.
+* Agle module (Module 03) me hum output format schema conform JSON mode structures trigger methods check karenge. Let's move on!
 -->
 

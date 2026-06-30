@@ -127,9 +127,10 @@ style: |
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Hey guys! Welcome back. Aaj hum baat karenge local databases search ke ek bohot important topic ke baare me—wo hai Embeddings & Semantic Search.
-Inference generate karne ke sath, hume documents search karne, similarities verify karne, ya RAG pipelines build karne ke liye text data ko vector formats me map karna padta hai.
-Is module me hum seekhenge ki kaise Ollama embeddings endpoint utilize karte hain aur context metrics retrieve karte hain.
+* Welcome back! Module 08 me humne structural FIM structures aur code autocompletion templates override methods check kiye.
+* Par local knowledge bases, documentation datasets aur matching applications text vectors calculations base scale demand karti hain.
+* Aaj hum text documents ko semantic float arrays me transform karne ke liye Embeddings APIs lookup logic evaluate karenge.
+* Hum literal keyword lookup aur geometric vector similarity patterns ke differences check karenge.
 -->
 
 ---
@@ -157,9 +158,9 @@ Is module me hum seekhenge ki kaise Ollama embeddings endpoint utilize karte hai
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-In dono search types ke internal difference ko evaluate karte hain.
-Left column check karein Keyword Search—ye basic character matching par focused hai. Agar text matching exact nahi hui toh queries fail ho jati hain.
-Right column check karein Semantic Search—yahan models words ko embedding values vector map coordinates me convert karte hain. Isse exact characters mismatch hone par bhi, meaning matching base similarity score check ho jata hai.
+* Keyword search aur Semantic vector search processes compare analyze karein.
+* Left side keyword checks exact string parameters syntax mapping par verify criteria run karta hai.
+* Right side semantic metrics dynamic conceptual coordinates map vector databases logic update select karta hai.
 -->
 
 ---
@@ -183,9 +184,9 @@ json.NewDecoder(resp.Body).Decode(&result)
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Code codebase side implementation check karte hain.
-Ollama me generate or chat API ke bajaye specialized API endpoint `/api/embeddings` call hota hai.
-Payload me hum prompt text aur specialized model name pass karte hain. HTTP response return hone par, body property `embedding` key check karein—ye ek long float slice return karta hai jo text data point coordinates target space maps representation hold karta hai.
+* Go program models endpoints embedding logic implementation configurations check karein.
+* Standard generation workflows skip `/api/embeddings` target parameters request structure apply karte hain.
+* Response return coordinates float slices vector database setup standard indexing me pass hotey hain.
 -->
 
 ---
@@ -218,9 +219,9 @@ Payload me hum prompt text aur specialized model name pass karte hain. HTTP resp
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Embedding outputs and metrics details parse karte hain.
-Left side JSON check karein: response parameter me hume numeric values list receive hoti hai.
-Right side check karein: array length coordinate dimensions determine karti hai. Jaise nomic-embed-text structure 768 float values map structure follow karta hai. In dimensions vectors ko hum cosine similarity algorithms run karke index similarity metrics calculate karte hain.
+* Telemetry response embeddings configurations metrics details parse analyze karein.
+* Left side output parameters direct array values coordinate dimensions hold cards populate karta hai.
+* High-dimensional structures similarities checks and geometric distances calculations parameters verify logic set.
 -->
 
 ---
@@ -247,10 +248,9 @@ Right side check karein: array length coordinate dimensions determine karti hai.
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Vector search pipelines production gotchas check karein.
-Pehla problem dimension scale mismatch hai—different models vector properties different size generate karte hain. Hamesha search index me constant model use karein.
-Doosra bottleneck document length issue hai—bade page size files direct vectors convert karne par precision metrics destroy ho jati hain, isliye overlapping sliding chunk logic apply karein.
-Teesra speed scaling constraints hai—millions records loops evaluation slow ho jati hain, iske liye indexing vector DB options execute karein.
+* Vector databases integrations issues and optimization setups checks apply karein.
+* Dimension mismatches avoid parameters single constant model configuration rule maintain set verify.
+* Chunking logic implement details context loss prevent bounds options parameters setup apply karein.
 -->
 
 ---
@@ -270,6 +270,8 @@ Teesra speed scaling constraints hai—millions records loops evaluation slow ho
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Chalo ab next module par chalte hain! Agle class me hum seekhenge ki kaise in saare building blocks ko connect karke ek self-reasoning local agent build kiya jata hai aur use GTX 1650 specification limits ke according optimize karte hain. See you in the next module!
+* Embeddings vector configurations aur semantic search setup successfully completed.
+* Ab tak humne isolated capabilities build kiye hain par dynamic AI agents autonomous behaviors loops require karte hain.
+* Agle module (Module 10) me hum custom cognitive loops build karne ke liye full capstone project autonomous agent framework design karenge. Let's start!
 -->
 

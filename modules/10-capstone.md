@@ -127,9 +127,10 @@ style: |
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Hey guys! Welcome to the Capstone module. Aaj hum baat karenge local systems me agent orchestration ke baare me—yaani humne pichle 9 modules me jo bhi seekha hai, un sabhi building blocks ko ek sath jodkar ek autonomous local agent build karenge.
-Hum is module me visual schemas, memory history, RAG vectors, aur tool invocation pipelines ka convergence dekhenge conceptual level par.
-Hum is slide deck me koi dynamic coding snippets nahi dikhayenge, balki pure system design aur working logic par focus karenge.
+* Welcome back! Module 09 me humne context search queries resolve karne ke liye embeddings create kiye.
+* Aaj hum in saare modules ke dynamic building blocks ko merge karke ek full autonomous local agent construct karenge.
+* Hum visual schemas, memory histories, vector retrieves, aur tool setups ka system design convergence check karenge.
+* Is conceptual presentation me hum standard logic patterns aur orchestrator loops structure par detail me focus karenge.
 -->
 
 ---
@@ -174,9 +175,9 @@ Hum is slide deck me koi dynamic coding snippets nahi dikhayenge, balki pure sys
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Chalo is Cognitive loop yaani Reasoning and Acting structure ko samajhte hain.
-Left column me process dekhiye: user query aate hi model directly answer nahi karta. Wo pehle sochna shuru karta hai, ek dynamic plan banata hai, suitable tool call (arguments ke sath) choose karta hai, and client-side code se execute kara kar observations capture karta hai.
-Right side flow structure dekhiye: ye loop tab tak chalta hai jab tak model satisfy nahi ho jata ki correct target data source retrieve ho gaya hai, fir target response user ko deliver ho jata hai.
+* ReAct cognitive reasoning loop execution cycle check karein.
+* Left side steps check karein: user goal assign hotey hi model execution sequence me thoughts process logic determine karta hai.
+* Right side flow diagram verify karein: client observations dynamically loop me return hokar model next choices update karti hain.
 -->
 
 ---
@@ -204,9 +205,9 @@ Right side flow structure dekhiye: ye loop tab tak chalta hai jab tak model sati
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-RAG aur active tools ke integration workflow ko check karte hain.
-Left column me dekhiye RAG pipeline—jaise hi request aati hai, orchestrator nomic-embed model use karke semantic search call execute karta hai aur relevant file segments pull karke system prompt buffer inside inject kar deta hai.
-Right column check karein tool loop—agar model lagta hai ki computational query ke liye external logic execute karni hai, toh wo system tool call parameter throw karta hai. Backend library commands run karke system observation state loop update kar deti hai.
+* RAG system features aur tool integration orchestrations check karein.
+* Left column check retrieve process: vector representations similarity inputs parse karke context buffer update kiya jata hai.
+* Right column actions process: dynamic conditions match database commands execution observations memory index inject karti hain.
 -->
 
 ---
@@ -233,9 +234,9 @@ Right column check karein tool loop—agar model lagta hai ki computational quer
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Agent parameters me processing telemetry details check karte hain.
-Left column check karein: har single reasoning loop iteration me token payload exponentially badhta hai kyunki pichle thoughts aur observations system memory stack inside combine ho jate hain.
-Right column check karein prompt_eval_count: yahan parsing latency high dikhegi kyunki model ko updates trace karne ke liye historical actions and tool outputs re-evaluate karne padte hain.
+* Loop iterations memory telemetry parameters details study karein.
+* Left side token calculations turn progression limits linear scaling state complexity trace check karein.
+* Right side prompt_eval_count limits evaluation loops duration memory caching effects parameters analyze karein.
 -->
 
 ---
@@ -262,10 +263,9 @@ Right column check karein prompt_eval_count: yahan parsing latency high dikhegi 
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-GTX 1650 hardware boundaries par agent deploy karte time key optimization rules follow karein.
-Pehla issue 4GB VRAM cap ka hai—chat and embed models simultaneously load hone par VRAM thrashing speed issues aate hain. Iske liye 1.5B/3B small parameters and quantized models use karein aur OLLAMA_NUM_PARALLEL standard limits to 1 fix rakhein.
-Doosra bottleneck infinite loops ka hai—model stuck ho sakta hai, client orchestrator side par loops count cap counters validate karein.
-Teesra VRAM context size issue hai—long strings CPU processing limits fall ho sakti hain, isliye context limit strictly 4k limit set parameters block karein.
+* GTX 1650 memory capacity constraints aur runtime gotchas solutions verify karein.
+* VRAM failures prevent karne ke liye quantization model parameters select default value setup range check karein.
+* Infinite reasoning loop limits checks and context size memory windows restrictions backend rules settings.
 -->
 
 ---
@@ -285,6 +285,8 @@ Teesra VRAM context size issue hai—long strings CPU processing limits fall ho 
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Chalo ab final module par chalte hain! Agle class me hum seekhenge ki kaise in local models ko deploy kiya jata hai scaling architectures use karke aur standard load balancing mechanisms trigger setup karte hain. See you in the next module!
+* Local autonomous ReAct agent design system structures evaluation complete target evaluate kiya.
+* Lekin local setup prototype se production cluster setup options scale parameters shift dynamics critical hotey hain.
+* Agle module (Module 11) me hum scaling configurations, containerized nodes, load balancing aur server queues resolve setup check karenge. Let's start!
 -->
 

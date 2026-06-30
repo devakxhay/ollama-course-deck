@@ -127,9 +127,10 @@ style: |
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Hey guys! Welcome back. Aaj hum baat karenge ek bohot hi important production requirement ke baare me—wo hai Multi-Turn State.
-LLMs architecture wise completely stateless hote hain. Wo ye yaad nahi rakh sakte ki pichle query me user ne kya poocha tha.
-Is session me hum seekhenge ki kaise application logic layer par conversation history array maintain karke hum dynamic memory features build kar sakte hain.
+* Welcome back! Module 04 me humne system instructions aur behaviors setup standard guidelines check kiye.
+* Par real chatbots me persistent memory ke bina back-and-forth dynamic conversations maintain nahi ki ja sakti.
+* Aaj hum seekhenge ki stateless APIs ke upar dynamic conversation history queue aur database levels par kaise manage karein.
+* Hum stateless request blocks aur stateful history array parameters ke difference evaluate karenge.
 -->
 
 ---
@@ -157,9 +158,9 @@ Is session me hum seekhenge ki kaise application logic layer par conversation hi
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Chalo iske primary differences samajhte hain.
-Left side par dekhein Stateless API: Ollama by default request bypass hone ke baad session clean kar deta hai. Har request fresh start hoti hai.
-Right side par Stateful History: yahan client ya backend server side par local db ya array list me data accumulate hota rehta hai, aur pure conversation timeline array ko har new hit ke sath send kiya jata hai taaki chat context maintained rahe.
+* Stateless API aur Stateful history ke mechanisms ko compare karte hain.
+* Stateless mode me server request complete hotey hi session clean database entries block clear kar deta hai.
+* Stateful structure me memory history lists maintain ki jati hain aur client har request call par poori history array pass karta hai.
 -->
 
 ---
@@ -189,9 +190,9 @@ func ChatTurn(userQuery string) string {
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Go code logic par focus karte hain.
-Humne yahan ek dynamic struct list pointer use kiya hai.
-User call aate hi hum history list me type user aur string append karte hain, is complete history object slice array ko hum API body payload JSON format me encode karke query send karte hain. Response returning phase par assistant response stream body ko array index state me store kar dete hain.
+* Go program structural logic database setups ko observe karein.
+* Humne dynamic message memory slices block define kiye hain parameters manage karne ke liye.
+* New messages list me append hote hain, aur assistant confirmation tokens successfully append parameters register karte hain.
 -->
 
 ---
@@ -218,12 +219,9 @@ User call aate hi hum history list me type user aur string append karte hain, is
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Chalo history size metrics ke context calculation ko deepdive karte hain.
-Left column me turn mapping sequence check karein:
-Pehle, Turn 1 me user prompt 10 tokens ka hai, toh engine sirf wahi 10 tokens evaluate karta hai. Suppose model ne 20 tokens ka reply generate kiya.
-Ab Turn 2 me, hamara history segment (10 user + 20 assistant = 30 tokens) aur current user query (10 tokens) combine hokar total input 40 tokens banate hain. Isliye prompt_eval_count 40 input tokens par update ho jata hai. Let's say model ne 30 tokens ka reply diya.
-Turn 3 me, pichli complete chain (10+20+10+30 = 70 tokens) aur new user prompt (15 tokens) add hokar 85 input tokens banate hain.
-Kyunki model architecture stateless hai, har turn par server ko system validation ke liye poori history read karni padti hai, jisse input size linearly scale hota hai. Right column me eval_count wahi tokens output dikhata hai jo current session response generation me lagte hain.
+* Session history token limits growth mathematical steps trace karein.
+* Turn 1 flat inputs run hote hain par Turn 2 start hote hi old conversations arrays context add compute target bounds increase karte hain.
+* linear progression analysis index elements scale verify control rules check karta hai.
 -->
 
 ---
@@ -255,9 +253,9 @@ $$\text{Payload}_N \approx N \cdot (u + a) - a$$
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Chalo is linear growth ke peeche ki simple mathematics samajhte hain.
-Left side par dekhiye token progression formula—har request payload me pichle saare turns ka dynamic sum send hota hai plus current user request size. Agar user aur assistant response size average scale par maintain rahein toh payload growth N times grow karti hai.
-Right side par check karein architectural cost—kyunki state server par save nahi hoti, toh Ollama ko linear complexity O(N) me context evaluate karna padta hai. Iska side effect ye hai ki chat history badi hone par prompt evaluation duration aur TTFB scale ho jate hain.
+* Tokens progression logic aur execution complex parameters calculations analyze karein.
+* Sum totals calculation turn metrics linear progress complexity representation parameters control map trace.
+* Stateless servers prompt evaluation latency overhead dynamically increase parameters process flow details.
 -->
 
 ---
@@ -284,10 +282,9 @@ Right side par check karein architectural cost—kyunki state server par save na
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Multi-turn operations me production scalability issues ko handle karne ke tips dekhiye.
-Pehla bottleneck context limit limits limit reach hone par aata hai, iske liye array windowing strategy use karein—purane chat index arrays block karein par index zero system configuration rules message maintain rakhein.
-Doosra problem high parsing TTFB values ka hai, options configurations options me num_ctx context parameters expand karke load balance check karein.
-Teesra issue network disconnect case me state mismatch ka hai, transaction locks validation checks response validation complete hone par hi memory stack update karein.
+* Memory history structures optimization rule limits parameters checks handle karein.
+* Sliding window array implementations use karke first indexing system instructions retain settings configure target.
+* State failure, cancellation exceptions aur transaction controls backend queue status check methods.
 -->
 
 ---
@@ -307,6 +304,8 @@ Teesra issue network disconnect case me state mismatch ka hai, transaction locks
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Chalo ab next module par chalte hain! Agle class me hum seekhenge ki kaise images ko process karke context window structure extend karte hain aur local multimodal applications build karte hain. See you in the next module!
+* Stateless history memory updates and multi-turn loops implementation completed.
+* Lekin text-only chats real-world media assets data segments parse karne me fail ho jati hain.
+* Agle module (Module 06) me hum image processing aur multimodal vision structures application details check karenge. Let's move!
 -->
 

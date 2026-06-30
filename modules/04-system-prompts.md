@@ -127,9 +127,10 @@ style: |
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Hey guys! Welcome back. Aaj hum baat karenge local application integration ke ek bohot important topic ke baare me—wo hai System Prompts.
-Jab hum raw LLMs use karte hain, toh wo generic response ya unexpected tone return kar sakte hain. Hum chahte hain ki hamara assistant ek constant behavioral frame ke andar reh kar output generate kare.
-Is module me hum seekhenge ki kaise role: system configure karke model ke tone, guardrails, aur behavior ko backend side se control kiya jata hai.
+* Welcome back! Module 03 me humne structured outputs validate karne ke liye JSON Mode seekha.
+* Par output structure ke sath model ke instructions, guardrails aur behavior control karna bhi zaroori hai.
+* Aaj hum seekhenge ki kaise role: system configure karke model ki personality ko standard set kiya jata hai.
+* Hum System aur User roles ke semantic differences aur dynamic setups check karenge.
 -->
 
 ---
@@ -157,9 +158,9 @@ Is module me hum seekhenge ki kaise role: system configure karke model ke tone, 
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Chalo in dono roles ke configuration differences ko samajhte hain.
-Left side par dekhiye system role—ye hamare assistant ka 'constitution' hai jo global instructions (jaise safety guidelines, database roles, formatting restrictions) feed karta hai.
-Right side par user role—ye normal user queries ya runtime inputs hote hain. Model in tasks ko execute karte time background me system constraints rules ko priority standard par follow karta hai.
+* System Role aur User Role ke configuration differences ko samajhte hain.
+* System configuration ek constitution ki tarah instructions register karti hai jo output generation constraints specify karti hai.
+* User messages real-time query inputs execute karte hain, jo system rules standard priority scale par execute hotey hain.
 -->
 
 ---
@@ -183,9 +184,9 @@ payload := map[string]interface{}{
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Code level par implementation bohot straight-forward hai.
-Yahan hum chat endpoint execute karne ke liye map list structure set kar rahe hain. messages array me index zero par humne system instructions compile kiye hain, jisme model ko strict instruction di hai ki standard responses SQL block me hi generate kare.
-Is payload list data structure ko directly /api/chat service par push kar diya jata hai.
+* Go program mapping backend structure me message payloads define karein.
+* Yahan index zero par system instruction define kiya hai, jo model ko strict constraints apply karne ko force karta hai.
+* Payload array directly chat integration service parameter pass endpoints hit karta hai.
 -->
 
 ---
@@ -219,9 +220,9 @@ Is payload list data structure ko directly /api/chat service par push kar diya j
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Response aur telemetry ko check karte hain.
-Left side par response message output check kijiye—assistant role ke sath clean SQL syntax code directly dynamic JSON me receive hua hai, isme koi explanations ya markdown code block headers visual wrappers nahi hain.
-Right side par prompt_eval_count dynamic runtime values dikhata hai. Pehli turn me system prompt evaluate hone ki wajah se prompt eval parsing overhead context memory map me initialize hota hai.
+* API execution returns aur telemetry check parameters analyse karein.
+* Message assistant role content SQL syntax query return format parameters represent karta hai.
+* Context evaluation parsing overhead pehli sequence run parameters compile metadata initialize state check karta hai.
 -->
 
 ---
@@ -248,10 +249,9 @@ Right side par prompt_eval_count dynamic runtime values dikhata hai. Pehli turn 
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-System prompts integrate karte time production me in teen challenges ka dhyan rakhein.
-Pehla issue hai prompt drift—chat history badi hone par instructions cache buffer segment se drop ho sakti hain. Iske liye list slicing logic runtime me index 0 message fix rakhein.
-Doosra jailbreaking—users ad-hoc command injections run kar sakte hain, isse bachne ke liye backend parsing layer par inputs ko xml tag filters me wrap karke pass karein.
-Teesra, small lightweight models system tags parameters sahi se parsing detect nahi kar pate, unke liye direct instruction details user messaging structure array inside push karein.
+* Production deployment guardrails system issues aur settings resolve limits evaluate karein.
+* Prompt drift problem memory bounds buffer limits index parameters set logic check control rules implement karein.
+* Jailbreak injection attacks prevent backend wrappers aur instruction formatting parameters setup set karein.
 -->
 
 ---
@@ -271,6 +271,8 @@ Teesra, small lightweight models system tags parameters sahi se parsing detect n
 
 <!-- 
 SPEAKER NOTES (Hinglish):
-Chalo ab next module par chalte hain! Agle class me hum seekhenge ki kaise message history append karke dynamic sessions manage karte hain aur history windowing apply karte hain. See you in the next module!
+* System Prompts behavior controls aur parameters rules settings implementation completed.
+* Lekin single-turn system parameters calls persistent session memory history represent nahi kar sakte.
+* Agle module (Module 05) me hum state preservation aur conversational sliding windows history options evaluate karenge. Let's move!
 -->
 
