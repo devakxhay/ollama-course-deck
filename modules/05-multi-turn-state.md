@@ -119,7 +119,7 @@ style: |
 
 <span class="module-label">Module 05 · Multi-Turn State</span>
 
-# <!-- fit --> Multi-Turn State
+# <!-- fit --> <img src="../assets/ollama.png" height="60" style="vertical-align: middle; margin-right: 15px;" /> Multi-Turn State
 
 <div class="title-divider"></div>
 

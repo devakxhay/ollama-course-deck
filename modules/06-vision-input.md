@@ -119,7 +119,7 @@ style: |
 
 <span class="module-label">Module 06 · Multimodal Vision</span>
 
-# <!-- fit --> Multimodal Vision Input
+# <!-- fit --> <img src="../assets/ollama.png" height="60" style="vertical-align: middle; margin-right: 15px;" /> Multimodal Vision Input
 
 <div class="title-divider"></div>
 

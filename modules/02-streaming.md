@@ -119,7 +119,7 @@ style: |
 
 <span class="module-label">Module 02 · Streaming Responses</span>
 
-# <!-- fit --> Streaming Responses
+# <!-- fit --> <img src="../assets/ollama.png" height="60" style="vertical-align: middle; margin-right: 15px;" /> Streaming Responses
 
 <div class="title-divider"></div>
 

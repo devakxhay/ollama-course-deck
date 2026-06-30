@@ -119,7 +119,7 @@ style: |
 
 <span class="module-label">Module 09 · Embeddings</span>
 
-# <!-- fit --> Embeddings & Semantic Search
+# <!-- fit --> <img src="../assets/ollama.png" height="60" style="vertical-align: middle; margin-right: 15px;" /> Embeddings & Semantic Search
 
 <div class="title-divider"></div>
 

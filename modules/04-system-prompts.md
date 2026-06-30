@@ -119,7 +119,7 @@ style: |
 
 <span class="module-label">Module 04 · System Prompts</span>
 
-# <!-- fit --> System Prompts
+# <!-- fit --> <img src="../assets/ollama.png" height="60" style="vertical-align: middle; margin-right: 15px;" /> System Prompts
 
 <div class="title-divider"></div>
 

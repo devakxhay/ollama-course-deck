@@ -119,7 +119,7 @@ style: |
 
 <span class="module-label">Module 08 · Raw Prompt Mechanics</span>
 
-# <!-- fit --> FIM & Raw Prompt Mechanics
+# <!-- fit --> <img src="../assets/ollama.png" height="60" style="vertical-align: middle; margin-right: 15px;" /> FIM & Raw Prompt Mechanics
 
 <div class="title-divider"></div>
 

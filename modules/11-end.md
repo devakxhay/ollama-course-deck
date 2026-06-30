@@ -119,7 +119,7 @@ style: |
 
 <span class="module-label">Module 11 · Course Outro</span>
 
-# <!-- fit --> Local LLMs in Production
+# <!-- fit --> <img src="../assets/ollama.png" height="60" style="vertical-align: middle; margin-right: 15px;" /> Local LLMs in Production
 
 <div class="title-divider"></div>
 

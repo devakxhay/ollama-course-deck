@@ -119,7 +119,7 @@ style: |
 
 <span class="module-label">Module 07 · Tool Use</span>
 
-# <!-- fit --> Function Calling & Tool Use
+# <!-- fit --> <img src="../assets/ollama.png" height="60" style="vertical-align: middle; margin-right: 15px;" /> Function Calling & Tool Use
 
 <div class="title-divider"></div>
 

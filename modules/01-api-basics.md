@@ -119,7 +119,7 @@ style: |
 
 <span class="module-label">Module 01 · REST API Internals</span>
 
-# <!-- fit --> How Ollama APIs Work
+# <!-- fit --> <img src="../assets/ollama.png" height="60" style="vertical-align: middle; margin-right: 15px;" /> How Ollama APIs Work
 
 <div class="title-divider"></div>
 

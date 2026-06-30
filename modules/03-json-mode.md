@@ -119,7 +119,7 @@ style: |
 
 <span class="module-label">Module 03 · Structured Output (JSON Mode)</span>
 
-# <!-- fit --> Structured Output
+# <!-- fit --> <img src="../assets/ollama.png" height="60" style="vertical-align: middle; margin-right: 15px;" /> Structured Output
 
 <div class="title-divider"></div>
 

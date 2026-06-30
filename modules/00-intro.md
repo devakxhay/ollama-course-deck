@@ -119,7 +119,7 @@ style: |
 
 <span class="module-label">Module 00 · Course Introduction</span>
 
-# <!-- fit --> Building with Ollama
+# <!-- fit --> <img src="../assets/ollama.png" height="60" style="vertical-align: middle; margin-right: 15px;" /> Building with Ollama
 
 <div class="title-divider"></div>
 

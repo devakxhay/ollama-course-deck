@@ -119,7 +119,7 @@ style: |
 
 <span class="module-label">Module 10 · Capstone Project</span>
 
-# <!-- fit --> Building a Local Agent
+# <!-- fit --> <img src="../assets/ollama.png" height="60" style="vertical-align: middle; margin-right: 15px;" /> Building a Local Agent
 
 <div class="title-divider"></div>
 
