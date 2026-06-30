@@ -140,7 +140,7 @@ section pre {
 section pre code {
   background: transparent !important;
   padding: 0 !important;
-  color: #f8fafc !important;
+  color: var(--color-text) !important;
   font-size: 0.9em;
   line-height: 1.6;
 }
@@ -149,23 +149,49 @@ section pre code {
 
 /* Syntax highlighting tweaks optimized for dark theme */
 .hljs-attr,
-.hljs-keyword {
-  color: #f43f5e;
-  font-weight: 500;
+.hljs-keyword,
+.hljs-selector-tag {
+  color: #f43f5e !important;
+  font-weight: 500 !important;
 }
 
-.hljs-string {
-  color: #34d399;
+.hljs-string,
+.hljs-regexp,
+.hljs-addition {
+  color: #34d399 !important;
 }
 
 .hljs-number,
 .hljs-literal {
-  color: #fb923c;
+  color: #fb923c !important;
 }
 
-.hljs-comment {
-  color: var(--color-muted);
-  font-style: italic;
+.hljs-comment,
+.hljs-quote {
+  color: var(--color-muted) !important;
+  font-style: italic !important;
+}
+
+.hljs-type,
+.hljs-built_in,
+.hljs-builtin-name {
+  color: #38bdf8 !important;
+}
+
+.hljs-title,
+.hljs-section {
+  color: #facc15 !important;
+  font-weight: 600 !important;
+}
+
+.hljs-params,
+.hljs-variable,
+.hljs-template-variable {
+  color: var(--color-text) !important;
+}
+
+.hljs-meta {
+  color: #94a3b8 !important;
 }
 
 

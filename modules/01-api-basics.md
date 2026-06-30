@@ -2,8 +2,7 @@
 marp: true
 theme: default
 paginate: true
-header: 'Ollama in Your Project | Module 01'
-footer: 'AI in Production Course'
+header: 'Ollama in Your Project'
 style: |
   @import "../templates/theme.css";
   section {
