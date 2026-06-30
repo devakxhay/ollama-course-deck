@@ -297,7 +297,7 @@ Last me hum ek full-blown capstone mini local agent build karenge jo in saare co
 * **What we will cover next:**
   * Endpoint payloads (`/api/generate` and `/api/chat`)
   * Reading execution telemetry & response metrics
-  * Production gotchas, timeouts, and parallel queues
+  * Common problems and how to fix them
 * **Get ready to write some code!**
 
 <!-- 
