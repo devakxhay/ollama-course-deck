@@ -283,3 +283,23 @@ Pehla, 5-minute timeout pe model memory se unload ho jata hai jiski wajah se fir
 Dusra, memory threshold by default standard 2k par capped hai, isliye options me num_ctx parameter bada set karein.
 Teesra, high concurrent traffic serve karne ke liye OLLAMA_NUM_PARALLEL configuration ka parallel execution set karna mat bhoolna.
 -->
+
+---
+
+# Next Up: Streaming Responses
+
+<div class="title-divider"></div>
+
+### Next Up: [Module 02 · Streaming Responses](./02-streaming.md)
+
+* **What we will cover next:**
+  * Understanding TTFB and latency bottlenecks
+  * Setting `"stream": true` and streaming raw JSON chunks
+  * Handling line-by-line streaming in Go
+  * Handling Nginx proxy buffering & network drops
+* **Get ready to fix the latency in your apps!**
+
+<!-- 
+SPEAKER NOTES (Hinglish):
+Toh chaliye agle module me badhte hain! Agle episode me hum dekhenge ki latency issue ko solve karne ke liye streaming responses ko code me kaise implement karte hain, aur reverse proxies ke configurations ko kaise fix kiya jata hai. See you there!
+-->

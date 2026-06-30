@@ -19,6 +19,8 @@
     3. Payload Configuration / Code Snippet
     4. Execution Telemetry / Output Analysis
     5. Production Gotchas / Error Resolution
+*   **Slide Heading Style Consistency:** Maintain consistent slide headings across all modules, drawing from the formats established in Module 00 and Module 01 (e.g., using `[A] vs. [B]: What is the Difference?` for core concepts, `How to [Action]...` for implementations, `How to Read [Telemetry]...` for output analysis, and `Common Problems and How to Fix Them` for production gotchas).
+
 
 ## 4. Marp Frontmatter CSS Standard (MANDATORY)
 Every Marp slide file (`.md`) in the `modules/` folder MUST include the following `style:` block in the YAML frontmatter.
