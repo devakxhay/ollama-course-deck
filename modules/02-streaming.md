@@ -175,10 +175,7 @@ defer resp.Body.Close()
 
 scanner := bufio.NewScanner(resp.Body)
 for scanner.Scan() {
-    var chunk struct {
-        Response string `json:"response"`
-        Done     bool   `json:"done"`
-    }
+    var chunk GenerateResponse
     if err := json.Unmarshal(scanner.Bytes(), &chunk); err != nil {
         log.Printf("Failed to decode chunk: %v", err)
         continue
